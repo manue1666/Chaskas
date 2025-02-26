@@ -1,0 +1,30 @@
+.all{
+    position: absolute;
+    right: 30%;    
+}
+.data {
+    height: 500px;
+    width: 500px;
+    display: flex; 
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    border: 5px rgb(11, 89, 40) solid;
+    border-radius: 5%;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+    align-items: center; 
+}
+.title{
+    color: white;
+}
+.navbar{
+    width:max-content;
+    height: 200px;
+    background-color: rgb(11, 89, 40);
+}
+
