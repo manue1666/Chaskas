@@ -66,6 +66,20 @@
             text-align: center;
             width: 150px;
         }
+        /* Estilo para el botón de cerrar sesión */
+        .logout-btn {
+            margin-top: 20px;
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        .logout-btn:hover {
+            background-color: #e03e3e;
+        }
     </style>
 </head>
 <body>
@@ -75,6 +89,7 @@
         <a href="#">Ventas</a>
         <a href="#">Inventario</a>
         <a href="#">Clientes</a>
+        <button class="logout-btn" id="logoutBtn">Cerrar sesión</button>
     </div>
     <div class="main-content">
         <div class="header">Panel de Administracion</div>
@@ -84,5 +99,11 @@
             <div class="card">Clientes: 80</div>
         </div>
     </div>
+
+    <script>
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            window.location.href = 'login.html'; 
+        });
+    </script>
 </body>
 </html>

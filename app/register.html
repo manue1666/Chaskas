@@ -1,84 +1,35 @@
-<html land="es">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Registrate!🌽</title>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="register-container">
+        <h2>🌽Registro de Usuario - Chaskas Doña Pelos🌽</h2>
+        <input type="text" id="newUsername" placeholder="Nombre de usuario">
+        <input type="password" id="newPassword" placeholder="Contraseña">
+        <input type="password" id="confirmPassword" placeholder="Confirmar contraseña">
+        <button class="register-button" id="submitRegisterBtn">Registrar</button>
+        <p>¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a></p>
+    </div>
 
-        <style>
-            body{
-                background-color: #ffcc29;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 100vh;
-                margin: 0;
-            }
-            .container{
-                background: #fff;
-                padding: 2;
-                border-radius: 15px;
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-                text-align: center;
-                width: 450px;
-                border: 5px solid #4caf50;
-            }
-            .container h2{
-                margin-bottom: 20px;
-                color: #4caf50;
-                margin-bottom: 20px;
-                font-size: 24px;
-            }
-            .container label{
-                display: block;
-                margin-bottom: 8px;
-            }
+    <script>
+        document.getElementById('submitRegisterBtn').addEventListener('click', function() {
+            const username = document.getElementById('newUsername').value;
+            const password = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
 
-            .container input[type="text"],
-            .container input[type="email"],
-            .container input[type="password"],
-            .container input[type="password"]{
-                width: 95%;
-                padding: 12px;
-                margin: 12px 0;
-                border: 2px solid #4caf50;
-                border-radius: 8px;
-                font-size: 16px;
-                outline: none;
+            if (password === confirmPassword) {
+                localStorage.setItem('registeredUser', JSON.stringify({ username, password }));
+                alert('Usuario registrado con éxito');
+                window.location.href = 'login.html';
+            } else {
+                alert('Las contraseñas no coinciden');
             }
-            .container input[type="submit"]{
-                background-color: #4caf50;
-                color: white;
-                padding: 10px 20px;
-                border: none;
-                border-radius: 4px;
-                cursor: pointer;
-            }
-            .container input[type="submit"]:hover{
-                background-color: #39853b;
-            }
-
-        </style>
-    </head>
-
-    <body>
-        <div class="container">
-            <h2>🌽 Registrate 🌽</h2>
-            <form action="/registro" method="POST">
-
-                <label for="username">Nombre de usuario</label>
-                <input type="text" id="username" name="username" required>
-
-                <label for="email">Correo</label>
-                <input type="email" id="email" name="email" required>
-                
-                <label for="password">Contraseña</label>
-                <input type="password" id="password" name="password" required>
-                
-                <label for="passtopass">Confirma tu contraseña</label>
-                <input type="password" id="passtopass" name="passtopass" required>
-                
-                <input type="submit" value="Registrarse">
-            </form>
-        </div>
-    </body>
+        });
+    </script>
+</body>
 </html>
