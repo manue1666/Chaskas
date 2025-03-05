@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Chaskas</title>
+    
     <style>
         * {
             margin: 0;
@@ -23,7 +24,11 @@
             padding: 20px;
             display: flex;
             flex-direction: column;
+            border-radius: 10px;
             align-items: center;
+            max-height: fit-content;
+            margin-left: 5px;
+            margin-top: 20px;
         }
         .sidebar h2 {
             margin-bottom: 20px;
@@ -55,18 +60,24 @@
         }
         .stats {
             display: flex;
-            justify-content: space-around;
+            flex-wrap: wrap;
+            justify-content: space-between; 
+            gap: 20px; 
             margin-top: 20px;
         }
         .card {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction:column-reverse;
+            align-content:center;
             background: white;
-            padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             text-align: center;
-            width: 150px;
+            width: 300px;
+            height: 300px;
         }
-        /* Estilo para el botón de cerrar sesión */
+        
         .logout-btn {
             margin-top: 20px;
             background-color: #ff4d4d;
@@ -85,15 +96,22 @@
 <body>
     <div class="sidebar">
         <h2>🌽 Chaskas</h2>
-        <a href="#">Dashboard</a>
-        <a href="#">Ventas</a>
-        <a href="#">Inventario</a>
-        <a href="#">Clientes</a>
+        <a href="dashboard.html">Productos</a>
+        <a href="usuarios.html">Usuarios</a>
         <button class="logout-btn" id="logoutBtn">Cerrar sesión</button>
     </div>
     <div class="main-content">
-        <div class="header">Panel de Administracion</div>
+        <div class="header">Productos</div>
         <div class="stats">
+            <div class="card">Ventas: $5,000</div>
+            <div class="card">Pedidos: 120</div>
+            <div class="card">Clientes: 80</div>
+            <div class="card">Ventas: $5,000</div>
+            <div class="card">Pedidos: 120</div>
+            <div class="card">Clientes: 80</div>
+            <div class="card">Ventas: $5,000</div>
+            <div class="card">Pedidos: 120</div>
+            <div class="card">Clientes: 80</div>
             <div class="card">Ventas: $5,000</div>
             <div class="card">Pedidos: 120</div>
             <div class="card">Clientes: 80</div>
