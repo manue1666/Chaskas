@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import { getAllUsers, login, registerUsers } from "./Controllers/UsersController";
 
 //servidor
 const app = express();
@@ -15,3 +16,10 @@ app.get("/",(_req, res)=>{
 
 export default app;
 //endpoints
+
+//endpoints de usuarios
+
+app.post("/users/regist",registerUsers)
+app.post("/users/login",login)
+
+app.get("users/getAllUsers",getAllUsers)

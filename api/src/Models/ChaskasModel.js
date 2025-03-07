@@ -18,4 +18,5 @@ const ChaskaSchema = new Schema({
     }
 })
 
+
 export const ChaskaModel = model("chaskas",ChaskaSchema)
