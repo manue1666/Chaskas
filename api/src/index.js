@@ -7,6 +7,7 @@ async function main() {
         console.log("aplicacion conectada a la bd");
         app.listen(4000, ()=>{
             console.log("aplicacion corriendo")
+            console.log("http://127.0.0.1:4000")
         })
     } catch (error) {
         console.log("algo fallo con la base de datos")

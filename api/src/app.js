@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
-import { getAllUsers, login, registerUsers } from "./Controllers/UsersController";
-import { createChaska, deleteChaska, getAllChaskas, getChaskas, updateChaska } from "./Controllers/ChaskasController";
+import { getAllUsers, login, registerUsers } from "./Controllers/UsersController.js";
+import { createChaska, deleteChaska, getAllChaskas, getChaskas, updateChaska } from "./Controllers/ChaskasController.js";
 
 //servidor
 const app = express();
@@ -15,7 +15,7 @@ app.get("/",(_req, res)=>{
     res.send("hola desde servidor js")
 })
 
-export default app;
+
 //endpoints
 
 //endpoints de usuarios
@@ -36,3 +36,5 @@ app.get("/allchaska/get",getAllChaskas)
 app.put("/chaskas/update", updateChaska)
 //borrar chaska
 app.delete("/chaska/delete",deleteChaska)
+
+export default app;
