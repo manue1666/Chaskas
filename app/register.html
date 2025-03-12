@@ -9,27 +9,13 @@
 <body>
     <div class="register-container">
         <h2>🌽Registro de Usuario - Chaskas Doña Pelos🌽</h2>
-        <input type="text" id="newUsername" placeholder="Nombre de usuario">
+        <input type="text" id="newName" placeholder="Nombre completo">
+        <input type="email" id="newEmail" placeholder="Correo electrónico">
         <input type="password" id="newPassword" placeholder="Contraseña">
-        <input type="password" id="confirmPassword" placeholder="Confirmar contraseña">
         <button class="register-button" id="submitRegisterBtn">Registrar</button>
         <p>¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a></p>
     </div>
 
-    <script>
-        document.getElementById('submitRegisterBtn').addEventListener('click', function() {
-            const username = document.getElementById('newUsername').value;
-            const password = document.getElementById('newPassword').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
-
-            if (password === confirmPassword) {
-                localStorage.setItem('registeredUser', JSON.stringify({ username, password }));
-                alert('Usuario registrado con éxito');
-                window.location.href = 'login.html';
-            } else {
-                alert('Las contraseñas no coinciden');
-            }
-        });
-    </script>
+    <script src="conection.js"></script>
 </body>
 </html>
