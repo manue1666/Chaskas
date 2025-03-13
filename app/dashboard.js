@@ -1,5 +1,4 @@
 // Función para obtener y mostrar las chaskas
-// Función para obtener y mostrar las chaskas
 const fetchAndDisplayChaskas = async () => {
     try {
         // Obtener las chaskas del backend
@@ -7,12 +6,12 @@ const fetchAndDisplayChaskas = async () => {
 
         if (response.ok) {
             const data = await response.json();
-            const chaskas = data.allChaskas; // Acceder al array de chaskas
+            const chaskas = data.allChaskas; 
 
-            // Guardar las chaskas en una variable global para usarlas en la búsqueda
+          
             window.allChaskas = chaskas;
 
-            // Mostrar las chaskas en la página
+        
             displayChaskas(chaskas);
         } else {
             const errorMsg = await response.text();
@@ -27,32 +26,26 @@ const fetchAndDisplayChaskas = async () => {
 
 // Función para mostrar las chaskas en la página
 const displayChaskas = (chaskas) => {
-    // Obtener el contenedor donde se mostrarán las chaskas
     const chaskasContainer = document.getElementById("chaskasContainer");
+    chaskasContainer.innerHTML = ""; // Limpiar antes de agregar nuevas
 
-    // Limpiar el contenedor antes de agregar las chaskas
-    chaskasContainer.innerHTML = "";
-
-    // Recorrer las chaskas y crear elementos HTML para cada una
     chaskas.forEach(chaska => {
         const chaskaCard = document.createElement("div");
         chaskaCard.className = "card";
+        chaskaCard.dataset.id = chaska._id;
 
-        // Agregar el nombre y la descripción de la chaska
         chaskaCard.innerHTML = `
-            <h3>${chaska.c_name}</h3>
-            <p>${chaska.c_description}</p>
+            <img src="https://th.bing.com/th/id/OIP.Ff9UpoqhiVbhy4jBkxRKtQHaFu?rs=1&pid=ImgDetMain" alt="Imagen de la chaska" class="chaska-img">
+            <h3 class="chaska-title">${chaska.c_name}</h3>
+            <p class="chaska-description">${chaska.c_description}</p>
             <button class="delete-btn" data-id="${chaska._id}">Eliminar</button>
         `;
 
-        // Agregar la tarjeta al contenedor
         chaskasContainer.appendChild(chaskaCard);
     });
 
-    // Agregar eventos a los botones de eliminación
     addDeleteEventListeners();
 };
-
 
 // Función para agregar eventos a los botones de eliminación
 const addDeleteEventListeners = () => {
@@ -60,22 +53,22 @@ const addDeleteEventListeners = () => {
 
     deleteButtons.forEach(button => {
         button.addEventListener("click", async () => {
-            const chaskaId = button.getAttribute("data-id"); // Obtener el _id de la chaska
+            const chaskaId = button.getAttribute("data-id"); 
 
             if (confirm("¿Estás seguro de que quieres eliminar esta chaska?")) {
                 try {
-                    // Enviar una solicitud DELETE al backend con el _id en el cuerpo
+                    
                     const response = await fetch("http://127.0.0.1:4000/chaska/delete", {
                         method: "DELETE",
                         headers: {
                             "Content-Type": "application/json",
                         },
-                        body: JSON.stringify({ _id: chaskaId }), // Enviar el _id en el cuerpo
+                        body: JSON.stringify({ _id: chaskaId }), 
                     });
 
                     if (response.ok) {
                         alert("Chaska eliminada exitosamente.");
-                        // Actualizar la lista de chaskas
+                      
                         fetchAndDisplayChaskas();
                     } else {
                         const errorMsg = await response.text();
@@ -91,9 +84,25 @@ const addDeleteEventListeners = () => {
     });
 };
 
+// Función para filtrar chaskas en tiempo real
+const searchChaskas = () => {
+    const searchInput = document.getElementById("searchInput");
+    
+    searchInput.addEventListener("input", () => {
+        const searchText = searchInput.value.toLowerCase();
+        
+        // Filtrar las chaskas globales en base a la búsqueda
+        const filteredChaskas = window.allChaskas.filter(chaska =>
+            chaska.c_name.toLowerCase().includes(searchText)
+        );
 
-
+    
+        displayChaskas(filteredChaskas);
+    });
+};
 
 // Llamar a la función para obtener y mostrar las chaskas cuando la página cargue
-document.addEventListener("DOMContentLoaded", fetchAndDisplayChaskas);
-
+document.addEventListener("DOMContentLoaded", () => {
+    fetchAndDisplayChaskas();
+    searchChaskas(); 
+});
