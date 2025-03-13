@@ -111,6 +111,7 @@
         <h2>🌽 Chaskas</h2>
         <a href="dashboard.html">Productos</a>
         <a href="usuarios.html">Usuarios</a>
+        <a href="addProduct.html">Crear Chaska</a>
         <button class="logout-btn" id="logoutBtn">Cerrar sesión</button>
     </div>
     <div class="main-content">
@@ -118,34 +119,26 @@
         <div class="search-container">
             <input type="text" id="searchInput" placeholder="Buscar producto...">
         </div>
-        <div class="stats" id="stats">
-            <div class="card">Elote con queso</div>
-            <div class="card">Elote con chile</div>
-            <div class="card">Chaskas naturales</div>
-            <div class="card">Chaskas con queso</div>
-            <div class="card">Chaskas con mayonesa</div>
-            <div class="card">Elote en vaso</div>
+        <div class="stats" id="chaskasContainer">
+            <!-- Las chaskas se mostrarán aquí dinámicamente -->
         </div>
     </div>
 
-    <script>
-        document.getElementById('logoutBtn').addEventListener('click', function() {
-            window.location.href = 'login.html'; 
-        });
+    <script src="dashboard.js"></script>
 
-        document.getElementById('searchInput').addEventListener('keyup', function() {
-            let filter = this.value.toLowerCase();
-            let cards = document.querySelectorAll('.card');
-            
-            cards.forEach(card => {
-                let text = card.textContent.toLowerCase();
-                if (text.includes(filter)) {
-                    card.style.display = "block";
-                } else {
-                    card.style.display = "none";
-                }
-            });
-        });
+    <script>
+        // Verificar si el usuario ha iniciado sesión
+        const userName = localStorage.getItem('userName');
+        const userId = localStorage.getItem('userId');
+
+        if (userName && userId) {
+            console.log(`Bienvenido, ${userName}!`);
+            // Mostrar el nombre del usuario en la página
+            document.body.innerHTML += `<p>Bienvenido, ${userName}!</p>`;
+        } else {
+            console.log('Usuario no autenticado. Redirigiendo a login...');
+            window.location.href = 'login.html'; // Redirigir a la página de inicio de sesión
+        }
     </script>
 </body>
 </html>

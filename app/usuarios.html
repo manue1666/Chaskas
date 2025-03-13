@@ -98,30 +98,42 @@
 <body>
     <div class="sidebar">
         <h2>🌽 Chaskas</h2>
-        <a href="#">Inventario</a>
-        <b href="#">Cerrar sesion</b>
+        <a href="dashboard.html">Inventario</a>
+        <b href="#" id="logoutBtn">Cerrar sesión</b>
     </div>
     <div class="main-content">
         <div class="header">Nuestros usuarios</div>
         <div class="stats">
-            <table>
+            <table id="usersTable">
                 <thead>
                     <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Juanito Lechuga</td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Armando Paredes</td>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Email</th>
                     </tr>
                 </thead>
+                <tbody>
+                    <!-- Los usuarios se mostrarán aquí dinámicamente -->
+                </tbody>
             </table>
         </div>
     </div>
-    <script src="conection.js"></script>
+
+    <script src="usuarios.js"></script> <!-- Archivo JavaScript para manejar la lógica -->
+
+    <script>
+        // Verificar si el usuario ha iniciado sesión
+        const userName = localStorage.getItem('userName');
+        const userId = localStorage.getItem('userId');
+
+        if (userName && userId) {
+            console.log(`Bienvenido, ${userName}!`);
+            // Mostrar el nombre del usuario en la página
+            document.body.innerHTML += `<p>Bienvenido, ${userName}!</p>`;
+        } else {
+            console.log('Usuario no autenticado. Redirigiendo a login...');
+            window.location.href = 'login.html'; // Redirigir a la página de inicio de sesión
+        }
+    </script>
 </body>
 </html>

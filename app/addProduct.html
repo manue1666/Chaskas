@@ -49,39 +49,30 @@
     <h2>Agregar Producto</h2>
     <form id="productForm">
         <label for="productName">Nombre del Producto:</label>
-        <input type="text" id="productName" name="productName" required>
+        <input type="text" id="c_name" name="c_name" required>
 
         <label for="productDescription">Descripción:</label>
-        <textarea id="productDescription" name="productDescription" rows="4" required></textarea>
-
-        <label for="userId">ID de Usuario:</label>
-        <input type="text" id="userId" name="userId" required>
+        <textarea id="c_description" name="c_description" rows="4" required></textarea>
 
         <button type="submit">Agregar Producto</button>
     </form>
 </div>
-
 <script>
-    document.getElementById('productForm').addEventListener('submit', function(event) {
-        event.preventDefault();
+    // Verificar si el usuario ha iniciado sesión
+    const userName = localStorage.getItem('userName');
+    const userId = localStorage.getItem('userId');
 
-        // Obtener los valores del formulario
-        const productName = document.getElementById('productName').value;
-        const productDescription = document.getElementById('productDescription').value;
-        const userId = document.getElementById('userId').value;
-
-        // Aquí puedes agregar la lógica para enviar los datos al servidor
-        console.log('Nombre del Producto:', productName);
-        console.log('Descripción:', productDescription);
-        console.log('ID del Usuario:', userId);
-
-        // Limpiar el formulario después de enviar
-        document.getElementById('productForm').reset();
-
-        alert('Producto agregado correctamente');
-    });
+    if (userName && userId) {
+        console.log(`Bienvenido, ${userName}!`);
+        // Mostrar el nombre del usuario en la página
+        document.body.innerHTML += `<p>Bienvenido, ${userName}!</p>`;
+    } else {
+        console.log('Usuario no autenticado. Redirigiendo a login...');
+        window.location.href = 'login.html'; // Redirigir a la página de inicio de sesión
+    }
 </script>
-<script src="conection.js"></script>
+
+<script src="create_chaska.js"></script>
 
 </body>
 </html>

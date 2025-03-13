@@ -9,30 +9,13 @@
 <body>
     <div class="login-container">
         <h2>🌽Bienvenido a Chaskas Doña Pelos🌽</h2>
-        <input type="text" id="username" placeholder="Nombre de usuario">
+        <input type="email" id="email" placeholder="Correo"> <!-- Cambiado a type="email" -->
         <input type="password" id="password" placeholder="Contraseña">
-        <button class="login-button" id="loginButon">Continuar</button>
-        <button class="register-button" id="registerButon">Registrar</button>
+        <button class="login-button" id="login">Continuar</button>
+        <button class="register-button" id="registerButon" ><a href="register.html">Registrar</a></button>
     </div>
 
-    <script>
-    
-        document.getElementById('loginButon').addEventListener('click', function() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-
-            if (username === "admin" && password === "pollas") {
-                window.location.href = 'dashboard.html';  
-            } else {
-                alert('Usuario o contraseña incorrectos');
-            }
-        });
-
-        document.getElementById('registerButon').addEventListener('click', function() {
-            window.location.href = 'register.html';  
-        });
-    </script>
-        <script src="conection.js"></script>
-
+    <script src="login.js"></script> <!-- Este archivo contiene la lógica de conexión -->
 </body>
+
 </html>
